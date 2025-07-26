@@ -1,0 +1,224 @@
+:root {
+  --gray-rgb: 16, 24, 21;
+  --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
+  --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
+
+  --primary-color: #00a86b;
+  --primary-hover: #01945d;
+
+  --secondary-hover: #f4f9f7;
+
+  --font-base: 'Poppins', sans-serif;
+  --font-mono: 'Fira Code', monospace;
+
+  --text-color: #101815;
+  --muted-text: #666;
+  --background: #fff;
+  --border-color: rgba(0, 0, 0, 0.05);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --gray-rgb: 255, 255, 255;
+    --gray-alpha-100: rgba(var(--gray-rgb), 0.06);
+    --gray-alpha-200: rgba(var(--gray-rgb), 0.1);
+
+    --primary-hover: #cfe5dd;
+    --secondary-hover: #1e1e1e;
+
+    --text-color: #f4f9f7;
+    --muted-text: #aaa;
+    --background: #101010;
+    --border-color: rgba(255, 255, 255, 0.08);
+  }
+}
+
+.page {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  align-items: start;
+  justify-items: center;
+  min-height: 100svh;
+  padding: 80px 64px;
+  gap: 64px;
+  font-family: var(--font-base);
+  background: var(--background);
+  color: var(--text-color);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  grid-row: 2;
+  width: 100%;
+  max-width: 960px;
+}
+
+.main ol {
+  font-family: var(--font-mono);
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  list-style-position: inside;
+  color: var(--text-color);
+}
+
+.main li:not(:last-of-type) {
+  margin-bottom: 8px;
+}
+
+.main code {
+  font-family: inherit;
+  background: var(--gray-alpha-100);
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.ctas {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.ctas a {
+  appearance: none;
+  border-radius: 100px;
+  height: 48px;
+  padding: 0 24px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.ctas a.primary {
+  background: var(--primary-color);
+  color: #fff;
+  gap: 8px;
+  box-shadow: 0 6px 20px rgba(0, 168, 106, 0.15);
+}
+
+.ctas a.secondary {
+  background: transparent;
+  border: 1px solid var(--gray-alpha-200);
+  color: var(--text-color);
+  min-width: 160px;
+}
+
+/* === Footer === */
+.footer {
+  grid-row: 3;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 32px 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(135deg, #0a0a0a, #101010);
+}
+
+/* Footer Links */
+.footer a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--muted-text, #cccccc);
+  text-decoration: none;
+  transition: color 0.3s, transform 0.3s;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+/* Icon Images */
+.footer img {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  transition: transform 0.3s;
+}
+
+/* Hover & Interactions */
+@media (hover: hover) and (pointer: fine) {
+  .ctas a.primary:hover {
+    background: var(--primary-hover);
+  }
+
+  .ctas a.secondary:hover {
+    background: var(--secondary-hover);
+    border-color: transparent;
+  }
+
+  .footer a:hover {
+    color: var(--primary-color, #00a86a);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transform: translateY(-2px);
+  }
+
+  .footer img:hover {
+    transform: scale(1.1);
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+  .page {
+    padding: 32px;
+    padding-bottom: 80px;
+    gap: 48px;
+  }
+
+  .main {
+    align-items: center;
+    text-align: center;
+  }
+
+  .main ol {
+    text-align: center;
+  }
+
+  .ctas {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .ctas a {
+    font-size: 15px;
+    height: 42px;
+    padding: 0 20px;
+    width: 100%;
+  }
+
+  .footer {
+    gap: 16px;
+    padding: 24px 12px;
+  }
+
+  .footer a {
+    font-size: 0.9rem;
+  }
+}
+
+/* Dark Mode Logo Support */
+@media (prefers-color-scheme: dark) {
+  .logo {
+    filter: invert(1);
+  }
+}
+
