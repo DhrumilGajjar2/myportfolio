@@ -56,7 +56,7 @@ export default function HeroSection() {
             initial="hidden"
             animate="visible"
           >
-            Hi, I'm Dhrumil 👋
+            Hi, I&apos;m Dhrumil 👋
           </motion.h1>
 
           <motion.p
